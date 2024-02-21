@@ -28,6 +28,6 @@ app.post('/push', express.json(), (req, res) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`서버가 ${port} 포트에서 실행 중입니다.`);
 });
