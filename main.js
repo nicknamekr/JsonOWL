@@ -2,10 +2,12 @@ const express = require('express');
 const fs = require('fs');
 
 const app = express();
-const port = 58082;
+const port = 58079;
 
-app.get('/pull', (req, res) => {
-  fs.readFile('database.json', 'utf-8', (err, data) => {
+app.get('/pull/:database', (req, res) => {
+  const databaseName = req.params.database;
+
+  fs.readFile(`./databases/${databaseName}.json`, 'utf-8', (err, data) => {
     if (err) {
       res.status(500).send(err);
       return;
@@ -15,16 +17,31 @@ app.get('/pull', (req, res) => {
   });
 });
 
-app.post('/push', express.json(), (req, res) => {
+app.post('/push/:database', express.json(), (req, res) => {
+  const databaseName = req.params.database;
   const data = req.body;
 
-  fs.writeFile('database.json', JSON.stringify(data), err => {
+  fs.writeFile(`./databases/${databaseName}.json`, JSON.stringify(data), err => {
     if (err) {
       res.status(500).send(err);
       return;
     }
 
     res.send('데이터가 성공적으로 업데이트되었습니다!');
+  });
+});
+
+app.post('/create/:database', express.json(), (req, res) => {
+  const databaseName = req.params.database;
+  const data = req.body;
+
+  fs.writeFile(`./databases/${databaseName}.json`, JSON.stringify(data), err => {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+
+    res.send('데이터베이스가 성공적으로 생성되었습니다!');
   });
 });
 
