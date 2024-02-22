@@ -2,7 +2,9 @@ FROM node:alpine
 
 WORKDIR /app
 
-RUN npm install express fs
+COPY package.json .
+
+RUN npm install
 
 COPY main.js .
 
