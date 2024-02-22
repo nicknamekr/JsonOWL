@@ -7,7 +7,7 @@ Simple JSON web storage made with Express &amp; Node.JS
  
 ## 실행
 ```sh
-docker build -t JsonOWL .
+docker build --tag JsonOWL:1.0 .
 ```
 ```sh
 docker run -p 58079:58079 JsonOWL
