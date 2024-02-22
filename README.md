@@ -6,9 +6,9 @@ Simple JSON web storage made with Express &amp; Node.JS
  원래 제일 쉬운 FastAPI 로 만들어 보려 했으나 Python 에서는 Alpine OS를 사용하면 빌드가 느려진다고 들어 Node.JS + Express로 노선을 변경했습니다.
  
 ## 실행
-'''sh
+```sh
 docker build -t JsonOWL .
-'''
-'''sh
+```
+```sh
 docker run -p 58079:58079 JsonOWL
-'''
+```
