@@ -7,4 +7,4 @@ RUN npm install express fs
 COPY main.js .
 COPY database.json .
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
